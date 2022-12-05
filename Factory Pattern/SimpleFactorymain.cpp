@@ -1,14 +1,14 @@
-//¿Í»§Àà
+//å®¢æˆ·ç±»
 
 /*#include<QCoreApplication>*/
 #include"simplefactory.h"
 
 int main(int argc, char* argv[]) {
 	/*argc
-	ÊÇÃüÁîÐÐ×ÜµÄ²ÎÊý¸öÊý£¬¼´argc¼ÇÂ¼ÁËÓÃ»§ÔÚÔËÐÐ³ÌÐòµÄÃüÁîÐÐÖÐÊäÈëµÄ²ÎÊý×ÜµÄ¸öÊý£»
+	æ˜¯å‘½ä»¤è¡Œæ€»çš„å‚æ•°ä¸ªæ•°ï¼Œå³argcè®°å½•äº†ç”¨æˆ·åœ¨è¿è¡Œç¨‹åºçš„å‘½ä»¤è¡Œä¸­è¾“å…¥çš„å‚æ•°æ€»çš„ä¸ªæ•°ï¼›
 	*/
 	/*argv[ ]
-	ÊÇargc¸ö²ÎÊý£¬ÆäÖÐµÚ0¸ö²ÎÊýÊÇ¿ÉÖ´ÐÐ³ÌÐò/ÎÄ¼þµÄÈ«Ãû£¬Æäºó¸úµÄ²ÎÊýÊÇÓÃ»§µÄÊäÈëµÄ²ÎÊý£»
+	æ˜¯argcä¸ªå‚æ•°ï¼Œå…¶ä¸­ç¬¬0ä¸ªå‚æ•°æ˜¯å¯æ‰§è¡Œç¨‹åº/æ–‡ä»¶çš„å…¨åï¼Œå…¶åŽè·Ÿçš„å‚æ•°æ˜¯ç”¨æˆ·çš„è¾“å…¥çš„å‚æ•°ï¼›
 	*/
 	SimpleFactory bmFactory;
 	BM* car1 = bmFactory.CreaterBM("BM111");
