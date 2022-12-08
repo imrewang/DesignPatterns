@@ -1,7 +1,6 @@
-#pragma once
 /*简单工厂模式
-简单工厂是由一个抽象产品类和一个具体工厂类实现的；
-抽象产品类，具体产品类，具体工厂类。
+工厂方法由一个抽象产品类和一个抽象工厂组成；
+抽象产品类，具体产品类，抽象工厂类，具体工厂类。
 */
 #include<stdio.h>
 #include<string>
@@ -23,13 +22,13 @@ public:
 	在基类中实现纯虚函数的方法是在函数原型后加“=0”
 	动物作为一个基类可以派生出老虎、孔雀等子类，但动物本身生成对象明显不合常理。
 	*/
-	
+
 };
 
 //具体产品1
 class BM111 :public BM {
 public:
-	BM111(){}
+	BM111() {}
 	void GetBM() {
 		cout << "BM 111" << endl;
 	}
@@ -38,28 +37,31 @@ public:
 //具体产品2
 class BM222 :public BM {
 public:
-	BM222(){}
+	BM222() {}
 	void GetBM() {
 		cout << "BM 222" << endl;
 	}
 };
 
-//具体工厂类
-class SimpleFactory {
+//工厂方法与简单工厂有基本相同的产品，区别在于抽象而非具体的工厂
+//抽象工厂类
+class Factory {
 public:
-	SimpleFactory(){}
+	virtual BM* CreaterBMFactory() = 0;
+};
 
-	BM* CreaterBM(string name) {
-		if (name == "BM111") {
-			return new BM111();
-		}
-		else if (name == "BM222") {
-			return new BM222();
-		}
-		else {
-			return NULL;
-		}
+//具体工厂1
+class BM111Factory :public Factory {
+public:
+	BM* CreaterBMFactory() {
+		return new BM111();
 	}
 };
 
-
+//具体工厂2
+class BM222Factory :public Factory {
+public:
+	BM* CreaterBMFactory() {
+		return new BM222();
+	}
+};
