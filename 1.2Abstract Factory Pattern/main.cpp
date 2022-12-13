@@ -1,15 +1,15 @@
-//¿Í»§¶Ë
+//å®¢æˆ·ç«¯
 #include"abstractfactory.h"
 
 int main() {
 	AbstractFactory* factory111 = new BM111Factory();
 	AbstractFactory* factory222 = new BM222Factory();
 
-	//´´½¨BM111×¨ÊôµÄEngineºÍGearBox
+	//åˆ›å»ºBM111ä¸“å±žçš„Engineå’ŒGearBox
 	Engine* engineA = factory111->CreatEngine();
 	GearBox* gearboxA = factory111->CreatGearBox();
 
-	//´´½¨BM222×¨ÊôµÄEngineºÍGearBox
+	//åˆ›å»ºBM222ä¸“å±žçš„Engineå’ŒGearBox
 	Engine* engineB = factory222->CreatEngine();
 	GearBox* gearboxB = factory222->CreatGearBox();
 
