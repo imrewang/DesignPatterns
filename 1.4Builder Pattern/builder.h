@@ -4,26 +4,26 @@
 
 using namespace std;
 /*Builder 
-³éÏó¹¹ÔìÕß£¬´´ÔìProduct¸÷¸ö²¿¼şµÄ³éÏó½Ó¿Ú£»
+æŠ½è±¡æ„é€ è€…ï¼Œåˆ›é€ Productå„ä¸ªéƒ¨ä»¶çš„æŠ½è±¡æ¥å£ï¼›
 ConcreteBuilder 
-¾ßÌå¹¹ÔìÕß£¬´´ÔìProduct¸÷¸ö²¿¼şµÄ¾ßÌåÊµÏÖ½Ó¿Ú£»
+å…·ä½“æ„é€ è€…ï¼Œåˆ›é€ Productå„ä¸ªéƒ¨ä»¶çš„å…·ä½“å®ç°æ¥å£ï¼›
 Director 
-Ö¸µ¼Õß£¬¸ÃÀàÒıµ¼BuilderÀ´ÊµÏÖÒ»¸ö²úÆ·¹¹ÔìµÄ³ÉÌåÁ÷³Ì£»
+æŒ‡å¯¼è€…ï¼Œè¯¥ç±»å¼•å¯¼Builderæ¥å®ç°ä¸€ä¸ªäº§å“æ„é€ çš„æˆä½“æµç¨‹ï¼›
 Product 
-²úÆ·£¬±íÊ¾±»¹¹ÔìµÄ¸´ÔÓ¶ÔÏó£»
+äº§å“ï¼Œè¡¨ç¤ºè¢«æ„é€ çš„å¤æ‚å¯¹è±¡ï¼›
 */
 
 /*
-1.¿Í»§´´½¨Director¶ÔÏó£¬²¢Í¨¹ıDirector¶ÔÏëÒªµÄBuilder¶ÔÏóÅäÖÃ£»
-2.Éú³É²úÆ·²¿¼ş£»
-3.·µ»Ø¸÷²¿¼ş×éºÏ³ÉµÄ²úÆ·×Ü³É£»
+1.å®¢æˆ·åˆ›å»ºDirectorå¯¹è±¡ï¼Œå¹¶é€šè¿‡Directorå¯¹æƒ³è¦çš„Builderå¯¹è±¡é…ç½®ï¼›
+2.ç”Ÿæˆäº§å“éƒ¨ä»¶ï¼›
+3.è¿”å›å„éƒ¨ä»¶ç»„åˆæˆçš„äº§å“æ€»æˆï¼›
 */
 
 
-//²úÆ·»ùÀà
+//äº§å“åŸºç±»
 class Car {
 public:
-	//»ñÈ¡²úÆ·²¿¼şº¯Êı
+	//è·å–äº§å“éƒ¨ä»¶å‡½æ•°
 	string get_engine() {
 		return m_engine;
 	}
@@ -34,7 +34,7 @@ public:
 		return m_chassis;
 	}
 
-	//ÉèÖÃ²úÆ·²¿¼şº¯Êı
+	//è®¾ç½®äº§å“éƒ¨ä»¶å‡½æ•°
 	void set_engine(string engine) {
 		m_engine = engine;
 		cout << "Car: set_engine: Creat " << engine << endl;
@@ -53,15 +53,15 @@ private:
 	string m_gearbox;
 	string m_chassis;
 };
-//²úÆ·×ÓÀà
-//±¦Âí³µ²úÆ·
+//äº§å“å­ç±»
+//å®é©¬è½¦äº§å“
 class BM :public Car {
 public: 
 	BM() {
 		cout << "BM: BM: Start build BM" << endl;
 	}
 };
-//±¼³Û³µ²úÆ·
+//å¥”é©°è½¦äº§å“
 class BZ :public Car {
 public:
 	BZ() {
@@ -71,20 +71,20 @@ public:
 
 
 
-//³éÏó½¨ÔìÕßÀà
+//æŠ½è±¡å»ºé€ è€…ç±»
 class CarBuilder {
 public:
-	/*´¿Ğéº¯ÊıµÄĞ´·¨¾ÍÊÇÔÚº¯ÊıÉùÃ÷ºóÃæ¼Ó¡°=0¡±£¬²»Ğ´º¯ÊıÌå¡£*/
-	virtual Car* build_car() = 0;//½¨Ôì³µ
-	/*Ğéº¯ÊıÊ¹ÓÃµÄÆäºËĞÄÄ¿µÄÊÇÍ¨¹ı»ùÀà·ÃÎÊÅÉÉúÀà¶¨ÒåµÄº¯Êı¡£
-	ËùÓĞ¿ÉÒÔÔÚÆä×ÓÀàÖØĞÂ¶¨Òå¸¸ÀàµÄ×ö·¨ÕâÖÖĞĞÎª³ÉÎª¸²¸Ç£¨override£©,»òÕßÎªÖØĞ´¡£
+	/*çº¯è™šå‡½æ•°çš„å†™æ³•å°±æ˜¯åœ¨å‡½æ•°å£°æ˜åé¢åŠ â€œ=0â€ï¼Œä¸å†™å‡½æ•°ä½“ã€‚*/
+	virtual Car* build_car() = 0;//å»ºé€ è½¦
+	/*è™šå‡½æ•°ä½¿ç”¨çš„å…¶æ ¸å¿ƒç›®çš„æ˜¯é€šè¿‡åŸºç±»è®¿é—®æ´¾ç”Ÿç±»å®šä¹‰çš„å‡½æ•°ã€‚
+	æ‰€æœ‰å¯ä»¥åœ¨å…¶å­ç±»é‡æ–°å®šä¹‰çˆ¶ç±»çš„åšæ³•è¿™ç§è¡Œä¸ºæˆä¸ºè¦†ç›–ï¼ˆoverrideï¼‰,æˆ–è€…ä¸ºé‡å†™ã€‚
 	*/
-	virtual void build_engine(){}//ÔìÒıÇæ
-	virtual void build_gearbox(){}//Ôì±äËÙÏä
-	virtual void build_chassis(){}//Ôìµ×ÅÌ
+	virtual void build_engine(){}//é€ å¼•æ“
+	virtual void build_gearbox(){}//é€ å˜é€Ÿç®±
+	virtual void build_chassis(){}//é€ åº•ç›˜
 
 };
-//¾ßÌå±¦Âí½¨ÔìÕßÀà
+//å…·ä½“å®é©¬å»ºé€ è€…ç±»
 class BMBuilder :public CarBuilder {
 public:
 	BMBuilder() {
@@ -105,7 +105,7 @@ public:
 private:
 	Car* m_car;
 };
-//¾ßÌå±¼³Û½¨ÔìÕßÀà
+//å…·ä½“å¥”é©°å»ºé€ è€…ç±»
 class BZBuilder :public CarBuilder {
 public:
 	BZBuilder() {
@@ -127,7 +127,7 @@ private:
 	Car* m_car;
 };
 
-//directorÖ¸µ¼Õß
+//directoræŒ‡å¯¼è€…
 class Director {
 public:
 	Car* construct_car(CarBuilder* car_builder) {
